@@ -1,6 +1,6 @@
 const express = require("express");
 const { Sequelize } = require("sequelize");
-const { Users } = require("../models/user.model");
+const Users = require("../models/user.model");
 
 const userRouter = express.Router();
 
@@ -15,7 +15,10 @@ userRouter.post("/adduser", async (req, res) => {
   let website = req.body.website;
   let city = req.body.city;
   let company = req.body.company;
-  await insertUser({ name, email, phone, website, city, company });
+  let userId = req.body.userId;
+
+  console.log(name, email, phone, website, city, company, userId);
+  await insertUser({ name, email, phone, website, city, company, userId });
   res.send("User added in database");
 });
 
