@@ -22,4 +22,13 @@ userRouter.post("/adduser", async (req, res) => {
   res.send("User added in database");
 });
 
+userRouter.get("/users", async (req, res) => {
+  try {
+    let users = await Users.findAll();
+    res.send(users);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = { userRouter };

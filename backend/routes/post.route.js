@@ -33,7 +33,6 @@ postRouter.get("/userposts/:userId", async (req, res) => {
     const workbook = new excel.Workbook();
     const worksheet = workbook.addWorksheet("Posts");
 
-    // Define headers
     worksheet.columns = [
       { header: "Name", key: "name", width: 20 },
       { header: "Title", key: "title", width: 30 },
@@ -41,7 +40,6 @@ postRouter.get("/userposts/:userId", async (req, res) => {
       { header: "Company", key: "company", width: 20 },
     ];
 
-    // Add rows with post data
     userPosts.forEach((post) => {
       worksheet.addRow({
         name: post.name,
@@ -51,14 +49,12 @@ postRouter.get("/userposts/:userId", async (req, res) => {
       });
     });
 
-    // Set response headers for Excel file download
     res.setHeader(
       "Content-Type",
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     );
     res.setHeader("Content-Disposition", "attachment; filename=posts.xlsx");
 
-    // Write Excel data to response stream
     await workbook.xlsx.write(res);
   } catch (error) {
     console.error(error);
