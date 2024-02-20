@@ -15,19 +15,19 @@ const Posts = sequelize.define(
       allowNull: false,
     },
     name: {
-      type: DataTypes.STRING(32),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     title: {
-      type: DataTypes.STRING(32),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     body: {
-      type: DataTypes.STRING(32),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     company: {
-      type: DataTypes.STRING(32),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },

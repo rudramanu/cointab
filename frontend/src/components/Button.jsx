@@ -21,7 +21,7 @@ const Button = ({ item }) => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:9600/user/users")
+    fetch("http://localhost:9600/user")
       .then((res) => res.json())
       .then((data) => {
         setDataFromBackend(data);
@@ -62,7 +62,7 @@ const Button = ({ item }) => {
     });
 
     const data = await res.json();
-    if (data.message === "User saved successfully") {
+    if (data.message === "User added in database") {
       alert("User saved successfully");
       setCheck(true);
     } else {

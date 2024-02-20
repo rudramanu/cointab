@@ -12,7 +12,13 @@ let insertPost = async (post) => {
 postRouter.post("/userpost", async (req, res) => {
   let posts = req.body;
   await insertPost(posts);
-  res.send("Post uploaded by user in database");
+  res.send({ message: "Post uploaded by user in database" });
+});
+
+postRouter.get("/getpost/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  const posts = await Posts.findAll({ where: { userId } });
+  res.send(posts);
 });
 
 const fetchUserPosts = async (userId) => {
